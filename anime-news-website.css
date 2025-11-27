@@ -1,0 +1,22 @@
+:root {
+  /* tweak this if your header height changes */
+  --header-height: 72px;
+}
+
+/* GLOBAL RESET / BASE */
+* {
+  outline: none !important;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", Arial, sans-serif;
+  background: #0f1216;
+  color: #e6eef6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.45;
+} /* ... (full file text from your context) ... */
