@@ -1,231 +1,694 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+:root {
+  --header-height: 72px;
+}
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Anime News</title>
-  <link rel="stylesheet" href="anime-news-website.css">
-</head>
+* {
+  outline: none !important;
+  box-sizing: border-box;
+}
 
-<body>
-  <header class="main-header">
-    <div class="nav-row">
-      <!-- LEFT: hamburger -->
-      <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="primary-menu"
-        aria-label="Toggle navigation menu">
-        ☰
-      </button>
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", Arial, sans-serif;
+  background: #0f1216;
+  color: #e6eef6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.45;
+}
 
-      <div class="logo-section">
-        <img src="Assets/Anime-news-logo.png" alt="Logo" class="logo-img" />
-        <span class="logo-main">Anime<span class="logo-orange">news</span></span>
-      </div>
+/* -------------- HEADER & NAVIGATION -------------- */
 
-      <div class="nav-actions">
-        <form class="search-form" role="search">
-          <button type="submit" class="search-btn" aria-label="Search">
-            <!-- use your own SVG here -->
-            <img src="Assets/search-icon.svg" alt="" class="search-icon">
-          </button>
-        </form>
+.main-header {
+  background: #070707;
+  border-bottom: 1.5px solid #222;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
 
-        <button class="sign-btn">Login</button>
-      </div>
-    </div>
+.nav-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .6rem 2.2rem;
+}
 
-    <nav class="main-nav" aria-label="Main navigation">
-      <ul id="primary-menu">
-        <li><a href="#latest" data-section="latest" class="active">Latest News</a></li>
-        <li><a href="#seasonal" data-section="seasonal">Seasonal Lineup</a></li>
-        <li><a href="#features" data-section="features">Features</a></li>
-        <li><a href="#Announcement" data-section="Announcement">Announcement</a></li>
-        <li><a href="#footer-section" data-no-router>About</a></li>
-      </ul>
-    </nav>
-  </header>
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0 0.3rem 0 0;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+
+.logo-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.logo-main {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.logo-orange {
+  color: #ff9900;
+  font-weight: 700;
+  margin-left: .21rem;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sign-btn {
+  background: rgba(20, 20, 20, 0.98);
+  color: white;
+  font-weight: 600;
+  border: 1px solid gray;
+  border-radius: 8px;
+  padding: 0.5rem 1.1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.crown {
+  font-size: 1.15em;
+  margin-right: 0.3em;
+  vertical-align: -.06em;
+}
+
+.search-btn {
+  background: transparent;
+  border: none;
+  color: #ff9900;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.search-btn:focus {
+  outline: 2px solid #ff9900;
+}
+
+.search-icon {
+  width: 24px;
+  height: 20px;
+  margin-top: 4px;
+  display: block;
+}
+
+.main-nav {
+  width: 100%;
+  background: #070707;
+  box-shadow: 0 1px 0 #282828;
+  padding: 0 2.2rem;
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  flex-wrap: nowrap;
+}
+
+.main-nav li {
+  margin: 0;
+}
+
+.main-nav a {
+  color: #fff;
+  font-size: 1.13rem;
+  font-weight: 700;
+  padding: 0.6rem .4rem 0.4rem .4rem;
+  text-decoration: none;
+  transition: color 0.19s;
+  display: inline-block;
+  position: relative;
+}
+
+.main-nav a.active,
+.main-nav a:hover {
+  color: #ff9900;
+}
+
+.main-nav a.active::after {
+  content: "";
+  display: block;
+  background: #ff9900;
+  height: 0.21rem;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+  border-radius: 2px 2px 0 0;
+}
+
+.arrow {
+  font-size: 0.85em;
+  margin-left: .24em;
+  vertical-align: middle;
+}
+
+/* ------------- MAIN LAYOUT ------------- */
+
+.page-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  margin-top: 7rem;
+  padding: 0 1.5rem;
+  overflow: visible;
+  flex-wrap: wrap;
+}
+
+main {
+  min-width: 0;
+  max-width: 875px;
+  width: 100%;
+  margin-top: 1.2rem;
+}
+
+.content h2 {
+  font-size: 2rem;
+}
+
+.content p {
+  font-size: 1.2rem;
+}
+
+/* SIDEBAR */
+
+aside {
+  flex: 1;
+  padding: 0.5rem 0 0 0;
+  position: sticky;
+  top: calc(var(--header-height) + 0.5rem);
+  align-self: flex-start;
+  min-width: 260px;
+}
+
+.sidebar-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 900px) {
+  aside {
+    top: calc(var(--header-height) * 0.85);
+  }
+}
+
+@media (max-width: 550px) {
+  aside {
+    top: calc(var(--header-height) * 0.75);
+  }
+}
+
+/* ----------- NEWS CARDS ------------*/
+
+.content-section .news-card {
+  padding: 0;
+}
+
+.news-card {
+  display: flex;
+  background: #111;
+  margin-bottom: 1.5rem;
+  align-items: flex-start;
+  padding: 0;
+  box-shadow: 0 2px 12px rgba(18, 24, 30, 0.07);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.news-img {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+  max-width: 470px;
+  height: auto;
+  object-fit: cover;
+  background: #292929;
+  flex-shrink: 0;
+}
+
+.seasonal-card .news-img {
+  max-width: 260px;
+  width: 100%;
+  max-height: 360px;
+  height: auto;
+}
+
+.news-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex: 1;
+  align-self: center;
+  text-decoration: none;
+  min-width: 0;
+}
+
+.news-label {
+  color: #ff9900;
+  font-size: 0.89rem;
+  font-weight: bold;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.news-title-link {
+  text-decoration: none;
+  display: block;
+}
+
+.news-title-link h3,
+.news-title {
+  font-size: clamp(1.6rem, 3vw, 1.9rem);
+  line-height: 1.3;
+  font-weight: 700;
+  color: #fff;
+  margin: 8px 0 0;
+  width: 100%;
+  height: auto;
+  align-self: center;
+}
+
+.news-details {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  font-size: 0.7rem;
+  color: #c4c4c4;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.news-author {
+  font-weight: 500;
+}
+
+.news-date {
+  font-size: 0.7rem;
+  color: #aaa;
+}
+
+.season-info p,
+.news-excerpt,
+.extra-meta {
+  list-style-type: none;
+  font-size: 14px;
+  margin: 16px 0 0 0;
+  padding: 0;
+}
+
+.season-info p {
+  margin-top: 8px;
+}
+
+.season-info {
+  margin-top: 16px;
+}
+
+.season-divider {
+  border: none;
+  border-top: 1px solid #333;
+  margin: 0.8rem 0;
+}
+
+/* ------------ TOP STORIES (SIDEBAR) ------------ */
+
+.top-story {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: flex-start;
+  margin-bottom: 1.6rem;
+  flex-wrap: wrap;
+}
+
+.top-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex: 1;
+  text-decoration: none;
+  min-width: 0;
+  width: 100%;
+}
+
+.news-label-t {
+  color: #ff9900;
+  font-size: 0.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  margin-bottom: 0.3rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.top-details {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  font-size: 0.7rem;
+  color: #c4c4c4;
+  flex-wrap: wrap;
+}
+
+.top-author {
+  display: none;
+}
+
+.top-date {
+  font-size: 0.7rem;
+  color: #aaa;
+}
+
+.thumb {
+  width: 132px;
+  height: 76px;
+  object-fit: cover;
+  background: #222;
+}
+
+.top-h3 {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  color: #fff;
+  margin-bottom: 0.3rem;
+  text-decoration: none;
+}
+
+/*--- FOOTER --- */
+
+.footer-divider {
+  border: none;
+  border-top: 1px solid #222;
+  margin: 2rem auto;
+  width: 100%;
+}
 
 
-  <div class="page-layout">
-    <!-- MAIN container: JS will replace the innerHTML of #main-content -->
-    <main>
-      <div id="main-content" tabindex="-1" style="min-height:60vh;">
-        <!-- initial content will be loaded by JS based on the current hash -->
-      </div>
-    </main>
+.cr-footer {
+  background-color: #0f1216;
+  padding: 50px 5%;
+  margin-top: 40px;
+  color: #ddd;
+}
 
-    <aside>
-      <h2 class="sidebar-heading">Top Stories</h2>
+.cr-footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+}
 
-      <div class="top-story">
-        <img src="Assets/a1.webp" alt="Bleach: Soul Resonance Action RPG Game Launches Worldwide" class="thumb">
-        <div class="top-card">
-          <a href="#" class="news-label-t">Top Stories</a>
-          <a href="#" class="top-h3">Bleach: Soul Resonance Action RPG Game Launches Worldwide</a>
-          <div class="top-details">
-            <time datetime="2025-11-21" class="top-date">NOV 21, 2025</time>
-          </div>
-        </div>
-      </div>
+.cr-footer-column h3 {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
 
-      <div class="top-story">
-        <img src="Assets/a2.webp" alt="‘So Bad’ Web Anime Teaser Promises Comedy Chaos" class="thumb">
-        <div class="top-card">
-          <a href="#" class="news-label-t">Top Stories</a>
-          <a href="#" class="top-h3">‘So Bad’ Web Anime Teaser Promises Comedy Chaos</a>
-          <div class="top-details">
-            <time datetime="2025-11-20" class="top-date">NOV 20, 2025</time>
-          </div>
-        </div>
-      </div>
+.cr-footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
-      <div class="top-story">
-        <img src="Assets/a3.webp" alt="Iconic Return: Lelouch from Code Geass Headlines Special Feature" class="thumb">
-        <div class="top-card">
-          <a href="#" class="news-label-t">Top Stories</a>
-          <a href="#" class="top-h3">Iconic Return: Lelouch from Code Geass Headlines Special Feature</a>
-          <div class="top-details">
-            <time datetime="2025-11-19" class="top-date">NOV 19, 2025</time>
-          </div>
-        </div>
-      </div>
+.cr-footer-column li {
+  margin-bottom: 10px;
+}
 
-      <div class="top-story">
-        <img src="Assets/a4.webp" alt="Anime Frontier Returns—Crunchyroll Presents New Guests & Events" class="thumb">
-        <div class="top-card">
-          <a href="#" class="news-label-t">Top Stories</a>
-          <a href="#" class="top-h3">Anime Frontier Returns—Crunchyroll Presents New Guests & Events</a>
-          <div class="top-details">
-            <time datetime="2025-11-18" class="top-date">NOV 18, 2025</time>
-          </div>
-        </div>
-      </div>
+.cr-footer-column a {
+  text-decoration: none;
+  color: #bbb;
+  transition: color 0.3s ease;
+}
 
-      <div class="top-story">
-        <img src="Assets/a5.webp" alt="Anyway, I’m Falling in Love with You Premieres This Season" class="thumb">
-        <div class="top-card">
-          <a href="#" class="news-label-t">Top Stories</a>
-          <a href="#" class="top-h3">Anyway, I’m Falling in Love with You Premieres This Season</a>
-          <div class="top-details">
-            <time datetime="2025-11-17" class="top-date">NOV 17, 2025</time>
-          </div>
-        </div>
-      </div>
+.cr-footer-column a:hover {
+  color: #ff9900;
+}
 
-      <div class="top-story">
-        <img src="Assets/a6.webp" alt="Release That Witch Anime Announced: Fiery Visual Revealed" class="thumb">
-        <div class="top-card">
-          <a href="#" class="news-label-t">Top Stories</a>
-          <a href="#" class="top-h3">Release That Witch Anime Announced: Fiery Visual Revealed</a>
-          <div class="top-details">
-            <time datetime="2025-11-16" class="top-date">NOV 16, 2025</time>
-          </div>
-        </div>
-      </div>
+/* Footer responsiveness */
+@media (max-width: 600px) {
+  .cr-footer {
+    padding: 40px 20px;
+  }
+}
 
-      <div class="top-story">
-        <img src="Assets/a7.webp" alt="Atom: The Beginning Officially Added to Titan Manga Lineup" class="thumb">
-        <div class="top-card">
-          <a href="#" class="news-label-t">Top Stories</a>
-          <a href="#" class="top-h3">Atom: The Beginning Officially Added to Titan Manga Lineup</a>
-          <div class="top-details">
-            <time datetime="2025-11-15" class="top-date">NOV 15, 2025</time>
-          </div>
-        </div>
-      </div>
+/* ------ RESPONSIVE BREAKPOINTS ------ */
 
-      <div class="top-story">
-        <img src="Assets/a8.webp" alt="Jujutsu Kaisen Villains Preview: Mystery Box Holds Many Eyes" class="thumb">
-        <div class="top-card">
-          <a href="#" class="news-label-t">Top Stories</a>
-          <a href="#" class="top-h3">Jujutsu Kaisen Villains Preview: Mystery Box Holds Many Eyes</a>
-          <div class="top-details">
-            <time datetime="2025-11-14" class="top-date">NOV 14, 2025</time>
-          </div>
-        </div>
-      </div>
+/* Tablets & smaller laptops */
+@media (max-width: 1024px) {
+  .nav-row {
+    padding: 0.5rem 1.2rem;
+  }
 
-      <div class="top-story">
-        <img src="Assets/a9.webp" alt="Chibi Heroes Assemble: Overlord, Tanya, and Kazuma Join in Maraca Musical"
-          class="thumb">
-        <div class="top-card">
-          <a href="#" class="news-label-t">Top Stories</a>
-          <a href="#" class="top-h3">Chibi Heroes Assemble: Overlord, Tanya, and Kazuma Join in Maraca Musical</a>
-          <div class="top-details">
-            <time datetime="2025-11-13" class="top-date">NOV 13, 2025</time>
-          </div>
-        </div>
-      </div>
+  .main-nav {
+    padding: 0 1.2rem;
+  }
 
-      <div class="top-story">
-        <img src="Assets/a10.webp" alt="Honkai: Star Rail x Crunchyroll Collaboration Hero Showcase" class="thumb">
-        <div class="top-card">
-          <a href="#" class="news-label-t">Top Stories</a>
-          <a href="#" class="top-h3">Honkai: Star Rail x Crunchyroll Collaboration Hero Showcase</a>
-          <div class="top-details">
-            <time datetime="2025-11-12" class="top-date">NOV 12, 2025</time>
-          </div>
-        </div>
-      </div>
+  .page-layout {
+    flex-direction: column;
+  }
 
-    </aside>
+  aside {
+    position: static;
+    width: 100%;
+    min-width: 0;
+  }
 
-  </div>
+  main {
+    width: 100%;
+  }
 
-  <hr class="footer-divider">
+  .news-card {
+    flex-direction: row;
+  }
+}
 
-  <footer class="cr-footer" id="footer-section">
 
-    <div class="cr-footer-container">
 
-      <!-- Navigation -->
-      <div class="cr-footer-column">
-        <h3>Navigation</h3>
-        <ul>
-          <li><a href="#">Browse Popular</a></li>
-          <li><a href="#">Browse Anime</a></li>
-          <li><a href="#">News</a></li>
-        </ul>
-      </div>
+/* Phones (mobile nav: hamburger + collapsing menu) */
+@media (max-width: 700px) {
+  .logo-main {
+    font-size: 1.3rem;
+  }
 
-      <!-- Connect With Us -->
-      <div class="cr-footer-column">
-        <h3>Connect With Us</h3>
-        <ul>
-          <li><a href="#">Youtube</a></li>
-          <li><a href="#">Facebook</a></li>
-          <li><a href="#">X</a></li>
-          <li><a href="#">Instagram</a></li>
-        </ul>
-      </div>
+  .sign-btn {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.9rem;
+  }
 
-      <!-- Anime News Info -->
-      <div class="cr-footer-column">
-        <h3>Anime News</h3>
-        <ul>
-          <li><a href="#"><strong>Start a Free Trial</strong></a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Help Center</a></li>
-          <li><a href="#">Terms of Use</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-        </ul>
-      </div>
+  .search-btn {
+    font-size: 1.7rem;
+  }
 
-      <!-- Account -->
-      <div class="cr-footer-column">
-        <h3>Account</h3>
-        <ul>
-          <li><a href="#">Create Account</a></li>
-          <li><a href="#">Log In</a></li>
-        </ul>
-      </div>
+  /* SHOW hamburger on small screens */
+  .menu-toggle {
+    display: inline-flex;
+  }
 
-    </div>
+  .main-nav {
+    padding: 0 1rem;
+  }
 
-  </footer>
+  .main-nav ul {
+    display: none;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 0.4rem;
+    padding: 0.4rem 0 0.8rem 0;
+    border-top: 1px solid #282828;
+  }
 
-  <!-- App script: SPA router + content store -->
-  <script src="news.js" defer></script>
-</body>
+  .main-nav ul.is-open {
+    display: flex;
+  }
 
-</html>
+  .main-nav a {
+    font-size: 0.98rem;
+    padding: 0.4rem 0.2rem;
+  }
+
+  .page-layout {
+    padding: 0 1rem;
+    margin-top: 2rem;
+  }
+
+  .content h2 {
+    font-size: 1.6rem;
+  }
+
+  .content p {
+    font-size: 1rem;
+  }
+
+  .news-card {
+    padding: 0.6rem;
+  }
+
+  .news-title-link h3,
+  .news-title {
+    font-size: 1rem;
+  }
+
+  .news-details {
+    font-size: 0.9rem;
+  }
+
+  .top-story {
+    flex-direction: column;
+  }
+
+  .thumb {
+    width: 100%;
+    height: 160px;
+  }
+
+  .top-h3 {
+    font-size: 0.95rem;
+  }
+}
+
+/* Extra small phones (~320–380px) */
+@media (max-width: 380px) {
+
+  .nav-row {
+    padding: 0.45rem 0.6rem;
+    gap: 0.3rem;
+  }
+
+  .menu-toggle {
+    font-size: 1.5rem;
+    padding: 0;
+    margin-right: 0.1rem;
+  }
+
+  .logo-img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .logo-main {
+    font-size: 1.05rem;
+  }
+
+  .search-btn {
+    padding: 0.25rem;
+  }
+
+  .search-icon {
+    width: 15px;
+    height: 15px;
+  }
+
+  .sign-btn {
+    padding: 0.22rem 0.6rem;
+    font-size: 0.75rem;
+  }
+
+  .main-nav ul {
+    gap: 0.4rem;
+    padding: 0.3rem 0;
+  }
+
+  .main-nav a {
+    font-size: 0.85rem;
+  }
+
+  .page-layout {
+    padding: 0 0.7rem;
+    margin-top: 1rem;
+  }
+
+  .news-card {
+    padding: 0.65rem;
+    gap: 0.65rem;
+  }
+
+  .news-img {
+    height: 160px;
+  }
+
+  .news-title {
+    font-size: 1rem;
+  }
+
+  .news-details {
+    font-size: 0.75rem;
+  }
+
+  .top-story {
+    flex-direction: column;
+  }
+
+  .thumb {
+    width: 100%;
+  }
+
+  .top-h3 {
+    font-size: 0.85rem;
+  }
+
+  .cr-footer {
+    padding: 1.5rem 0.8rem;
+  }
+
+  .cr-footer-column h3 {
+    font-size: 0.9rem;
+  }
+
+  .cr-footer-column ul {
+    font-size: 0.8rem;
+  }
+}
+
+/* Tablets: show footer in 2 columns */
+@media (max-width: 1024px) and (min-width: 601px) {
+  .cr-footer-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+  }
+
+}
+/* Added HR between footer columns on small screens */
+@media (max-width: 600px) {
+  .cr-footer-column {
+    border-bottom: 1px solid #222;
+    padding-bottom: 1rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .cr-footer-container{
+    gap:0px;
+  }
+}
