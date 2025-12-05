@@ -554,7 +554,19 @@ aside {
   .news-card {
     padding: 0.6rem;
   }
+  
+  .news-card,
+  .seasonal-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
 
+  .seasonal-card .news-img {
+    max-width: 100%;
+    width: 100%;
+    max-height: none;
+  }
+  
   .news-title-link h3,
   .news-title {
     font-size: 1rem;
