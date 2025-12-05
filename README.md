@@ -73,12 +73,10 @@ A responsive newspaper-style web layout featuring dynamic content switching usin
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/ed416cd3-da43-4f91-9775-eb07f925f31f" alt="Mobile – Latest News" width="28%" />
-  <img src="https://github.com/user-attachments/assets/049de418-40d1-4d61-b222-36e11b7985e8" alt="Mobile – Top Stories" width="28%" />
   <img src="https://github.com/user-attachments/assets/41463e1b-9b76-4a60-aaca-be7eeaee88f3" alt="Mobile – Seasonal" width="28%" />
 </p>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/c8d5fee2-1651-4cd0-be6a-de859f489345" alt="Mobile – Navbar" width="28%" />
   <img src="https://github.com/user-attachments/assets/3c571a7a-2e15-46ab-a835-c6fdf0f342ed" alt="Mobile – Features" width="28%" />
   <img src="https://github.com/user-attachments/assets/a00f1724-9cf3-49b3-b3e3-eb61408d0e0e" alt="Mobile – Announcements" width="28%" />
 </p>
