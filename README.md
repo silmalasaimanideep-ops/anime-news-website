@@ -2,6 +2,9 @@
 A responsive newspaper-style web layout featuring dynamic content switching using Vanilla JavaScript. Includes modern UI design, SPA-style navigation, seasonal listings, announcements, and a sidebar with top stories. Fully optimized for desktop, tablet, and mobile devices.
 
 ---
+---
+🔗 **Live Demo:** https://silmalasaimanideep-ops.github.io/anime-news-website/
+---
 
 ## ✨ Features
 
@@ -52,20 +55,6 @@ A responsive newspaper-style web layout featuring dynamic content switching usin
 │ └── icons, logos, etc.
 ├── README.md
 └── DOCUMENTATION.md
-
-## 📸 Screenshots
-
----
-
-## 🖥️ Desktop View
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/705de818-9bba-4c34-a735-110917ff562a" alt="Desktop – Seasonal Lineup" width="90%" />
-  <img src="https://github.com/user-attachments/assets/4b6ab4ec-8dc9-4de7-b5d3-8ad47287f159" alt="Desktop – Latest News" width="90%" />
-  <img src="https://github.com/user-attachments/assets/9d183616-0908-418e-82c7-33a0c6f1ae44" alt="Desktop – Features" width="90%" />
-  <img src="https://github.com/user-attachments/assets/dc94a03e-c891-4d29-b418-ee00ec06c74c" alt="Desktop – Announcements" width="90%" />
-  <img src="https://github.com/user-attachments/assets/f4d09e42-7878-453d-acf8-02444543f35a" alt="Desktop – About Page" width="90%" />
-</p>
 
 ## Ensure the following files stay in the same directory:
 
